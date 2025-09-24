@@ -13,6 +13,10 @@ builder.Services.AddDbContext<CustodiaDbContext>(options =>
 // Inyección de dependencias
 builder.Services.AddScoped<IContratoRepository, ContratoRepository>();
 builder.Services.AddScoped<ContratoService>();
+builder.Services.AddScoped<IVigenciaRepository, VigenciaRepository>();
+builder.Services.AddScoped<VigenciaService>();
+builder.Services.AddScoped<IAnaquelRepository, AnaquelRepository>();
+builder.Services.AddScoped<AnaquelService>();
 
 // Add services to the container.
 

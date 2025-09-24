@@ -15,7 +15,7 @@ namespace Custodia.Domain.Entities
         public string Codigo { get; set; } = null!;
 
         public int AnaquelId { get; set; }
-        public virtual Anaquel Anaquel { get; set; } = null!;
+        public virtual Anaquel? Anaquel { get; set; } = null!;
 
         public virtual ICollection<Dependencia> Dependencias { get; set; } = new List<Dependencia>();
     }
