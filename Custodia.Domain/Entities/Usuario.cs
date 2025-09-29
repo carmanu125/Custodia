@@ -21,7 +21,7 @@ namespace Custodia.Domain.Entities
         public string Contrasena { get; set; } = null!;
 
         public int RolId { get; set; }
-        public virtual Rol Rol { get; set; } = null!;
+        public virtual Rol? Rol { get; set; } = null!;
 
         // Relación con Trazabilidad
         public virtual ICollection<Trazabilidad> Trazas { get; set; } = new List<Trazabilidad>();

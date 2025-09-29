@@ -16,7 +16,7 @@ namespace Custodia.Domain.Entities
         public string ArchivoPdf { get; set; } = null!;
 
         public int ContratoId { get; set; }
-        public virtual Contrato Contrato { get; set; } = null!;
+        public virtual Contrato? Contrato { get; set; } = null!;
 
         public virtual ICollection<Trazabilidad> Trazas { get; set; } = new List<Trazabilidad>();
     }

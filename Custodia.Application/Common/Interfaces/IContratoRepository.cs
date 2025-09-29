@@ -10,6 +10,10 @@ namespace Custodia.Application.Common.Interfaces
     public interface IContratoRepository
     {
         Task<Contrato> AddAsync(Contrato contrato);
-        Task<Contrato?> GetByNumeroAsync(string numero);
+        Task<Contrato?> GetByIdAsync(int id);
+        Task<IEnumerable<Contrato>> GetAllAsync();
+        Task UpdateAsync(Contrato contrato);
+        Task DeleteAsync(Contrato contrato);
+        Task<bool> ExistsByCodeAsync(string numero, int? excludingId = null);
     }
 }

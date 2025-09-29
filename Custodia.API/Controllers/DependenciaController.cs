@@ -1,28 +1,29 @@
-﻿using Custodia.Application.DTOs;
-using Custodia.Application.DTOs.Contratos;
+﻿using Custodia.Application.DTOs.Dependencia;
+using Custodia.Application.DTOs;
 using Custodia.Application.Services;
-using Custodia.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Custodia.API.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    public class ContratosController : ControllerBase
+    [ApiController]
+    public class DependenciaController : ControllerBase
     {
-        private readonly ContratoService _service;
 
-        public ContratosController(ContratoService service)
+        private readonly DependenciaService _service;
+
+        public DependenciaController(DependenciaService service)
         {
             _service = service;
         }
 
         /// <summary>
-        /// POST: api/Contratos
-        /// Crea una nueva Contrato
+        /// POST: api/Dependencias
+        /// Crea una nueva Dependencia
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] ContratoCreateDto dto)
+        public async Task<IActionResult> Create([FromBody] DependenciaCreateDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -40,8 +41,8 @@ namespace Custodia.API.Controllers
         }
 
         /// <summary>
-        /// GET: api/Contratos
-        /// Lista todas las Contratos
+        /// GET: api/Dependencias
+        /// Lista todas las Dependencias
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -51,8 +52,8 @@ namespace Custodia.API.Controllers
         }
 
         /// <summary>
-        /// GET: api/Contratos/{id}
-        /// Obtiene Contrato por id
+        /// GET: api/Dependencias/{id}
+        /// Obtiene Dependencia por id
         /// </summary>
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
@@ -63,11 +64,11 @@ namespace Custodia.API.Controllers
         }
 
         /// <summary>
-        /// PUT: api/Contratos/{id}
-        /// Actualiza la Contrato indicada
+        /// PUT: api/Dependencias/{id}
+        /// Actualiza la Dependencia indicada
         /// </summary>
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, [FromBody] ContratoUpdateDto dto)
+        public async Task<IActionResult> Update(int id, [FromBody] DependenciaUpdateDto dto)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -87,8 +88,8 @@ namespace Custodia.API.Controllers
         }
 
         /// <summary>
-        /// DELETE: api/Contratos/{id}
-        /// Elimina Contrato por id
+        /// DELETE: api/Dependencias/{id}
+        /// Elimina Dependencia por id
         /// </summary>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)

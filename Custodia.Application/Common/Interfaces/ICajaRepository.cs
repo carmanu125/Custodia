@@ -10,9 +10,11 @@ namespace Custodia.Application.Common.Interfaces
 {
     public interface ICajaRepository
     {
-        Task<Caja> CreateAsync(CreateCajaDto dto);
+        Task<Caja> AddAsync(Caja caja);
         Task<Caja?> GetByIdAsync(int id);
         Task<IEnumerable<Caja>> GetAllAsync();
-        Task DeleteAsync(int id);
+        Task UpdateAsync(Caja caja);
+        Task DeleteAsync(Caja caja);
+        Task<bool> ExistsByCodeAsync(string code, int? excludingId = null);
     }
 }

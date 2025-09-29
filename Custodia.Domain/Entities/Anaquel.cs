@@ -15,7 +15,7 @@ namespace Custodia.Domain.Entities
         public string Nombre { get; set; } = null!;
 
         public int VigenciaId { get; set; }
-        public virtual Vigencia Vigencia { get; set; } = null!;
+        public virtual Vigencia? Vigencia { get; set; } = null!;
 
         public virtual ICollection<Caja> Cajas { get; set; } = new List<Caja>();
     }

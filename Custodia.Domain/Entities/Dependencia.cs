@@ -16,7 +16,7 @@ namespace Custodia.Domain.Entities
         public string? Nombre { get; set; }
 
         public int CajaId { get; set; }
-        public virtual Caja Caja { get; set; } = null!;
+        public virtual Caja? Caja { get; set; } = null!;
         public string? Observaciones { get; set; }
 
         public virtual ICollection<Contrato> Contratos { get; set; } = new List<Contrato>();

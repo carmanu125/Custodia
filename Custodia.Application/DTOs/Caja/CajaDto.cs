@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Custodia.Application.DTOs
+namespace Custodia.Application.DTOs.Caja
 {
-    public class CajaCreateDto
+    public class CajaDto
     {
-        public string Codigo { get; set; } = null!;
+        public int Id { get; set; }
+        public string Codigo { get; set; } = string.Empty;
         public int AnaquelId { get; set; }
     }
 }
