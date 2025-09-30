@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Custodia.Application.DTOs
+namespace Custodia.Application.DTOs.Usuario
 {
     public class RolCreateDto
     {

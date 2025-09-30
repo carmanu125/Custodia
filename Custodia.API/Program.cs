@@ -21,6 +21,10 @@ builder.Services.AddScoped<ICajaRepository, CajaRepository>();
 builder.Services.AddScoped<CajaService>();
 builder.Services.AddScoped<IDependenciaRepository, DependenciaRepository>();
 builder.Services.AddScoped<DependenciaService>();
+builder.Services.AddScoped<IFolioRepository, FolioRepository>();
+builder.Services.AddScoped<FolioService>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<UsuarioService>();
 
 // Add services to the container.
 
