@@ -1,4 +1,4 @@
-using Custodia.Application.Common.Interfaces;
+﻿using Custodia.Application.Common.Interfaces;
 using Custodia.Application.Services;
 using Custodia.Infrastructure.Persistence;
 using Custodia.Infrastructure.Repositories;
@@ -10,7 +10,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CustodiaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("CustodiaDB")));
 
-// Inyecci�n de dependencias
+// Habilitar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200") // 👈 tu frontend
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
+// Inyección de dependencias
 builder.Services.AddScoped<IContratoRepository, ContratoRepository>();
 builder.Services.AddScoped<ContratoService>();
 builder.Services.AddScoped<IVigenciaRepository, VigenciaRepository>();
@@ -38,6 +50,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Usar la política de CORS
+app.UseCors("AllowAngular");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
