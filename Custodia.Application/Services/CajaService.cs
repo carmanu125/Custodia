@@ -42,7 +42,7 @@ namespace Custodia.Application.Services
         public async Task<IEnumerable<CajaDto>> GetAllAsync()
         {
             var list = await _repository.GetAllAsync();
-            return list.Select(v => new CajaDto { Id = v.Id, Codigo = v.Codigo });
+            return list.Select(v => new CajaDto { Id = v.Id, Codigo = v.Codigo, AnaquelId = v.AnaquelId });
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Custodia.Application.Services
         {
             var v = await _repository.GetByIdAsync(id);
             if (v == null) return null;
-            return new CajaDto { Id = v.Id, Codigo = v.Codigo };
+            return new CajaDto { Id = v.Id, Codigo = v.Codigo, AnaquelId = v.AnaquelId };
         }
 
         /// <summary>
