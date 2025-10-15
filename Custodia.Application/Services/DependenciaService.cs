@@ -42,7 +42,7 @@ namespace Custodia.Application.Services
         public async Task<IEnumerable<DependenciaDto>> GetAllAsync()
         {
             var list = await _repository.GetAllAsync();
-            return list.Select(v => new DependenciaDto { Id = v.Id, Nombre = v.Nombre, Observaciones = v.Observaciones });
+            return list.Select(v => new DependenciaDto { Id = v.Id, Nombre = v.Nombre, Observaciones = v.Observaciones, CajaId=v.CajaId });
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Custodia.Application.Services
         {
             var v = await _repository.GetByIdAsync(id);
             if (v == null) return null;
-            return new DependenciaDto { Id = v.Id, Nombre = v.Nombre, Observaciones=v.Observaciones };
+            return new DependenciaDto { Id = v.Id, Nombre = v.Nombre, Observaciones=v.Observaciones, CajaId = v.CajaId   };
         }
 
         /// <summary>
