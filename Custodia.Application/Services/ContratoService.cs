@@ -29,11 +29,13 @@ namespace Custodia.Application.Services
                 DependenciaId = dto.DependenciaId,
                 FechaFin = dto.FechaFin,
                 FechaInicio = dto.FechaInicio,
+                Descripcion = dto.Descripcion,  
+                
             };
 
             var created = await _repository.AddAsync(contrato);
 
-            return new ContratoDto { Id = created.Id, Numero = created.Numero, DependenciaId= created.DependenciaId};
+            return new ContratoDto { Id = created.Id, Numero = created.Numero, FechaInicio=created.FechaInicio, FechaFin=created.FechaFin,Descripcion = created.Descripcion, DependenciaId= created.DependenciaId};
         }
 
         /// <summary>
@@ -42,7 +44,7 @@ namespace Custodia.Application.Services
         public async Task<IEnumerable<ContratoDto>> GetAllAsync()
         {
             var list = await _repository.GetAllAsync();
-            return list.Select(v => new ContratoDto { Id = v.Id, Numero = v.Numero });
+            return list.Select(v => new ContratoDto { Id = v.Id, Numero = v.Numero, Descripcion=v.Descripcion, DependenciaId= v.DependenciaId, FechaFin = v.FechaFin, FechaInicio = v.FechaInicio });
         }
 
         /// <summary>
@@ -52,7 +54,7 @@ namespace Custodia.Application.Services
         {
             var v = await _repository.GetByIdAsync(id);
             if (v == null) return null;
-            return new ContratoDto { Id = v.Id, Numero = v.Numero };
+            return new ContratoDto { Id = v.Id, Numero = v.Numero, Descripcion = v.Descripcion, DependenciaId = v.DependenciaId, FechaFin = v.FechaFin, FechaInicio = v.FechaInicio };
         }
 
         /// <summary>
@@ -73,7 +75,6 @@ namespace Custodia.Application.Services
             existing.FechaInicio = dto.FechaInicio;
             existing.FechaFin = dto.FechaFin;
             existing.Descripcion = dto.Descripcion;
-
 
             await _repository.UpdateAsync(existing);
         }
